@@ -37,8 +37,8 @@ else
 fi
 
 SCRIPTS_DIR="$OUTPUT/scripts"
-BITWARDEN_SCRIPT_URL="https://func.bitwarden.com/api/dl/?app=self-host&platform=linux"
-RUN_SCRIPT_URL="https://func.bitwarden.com/api/dl/?app=self-host&platform=linux&variant=run"
+BITWARDEN_SCRIPT_URL="https://raw.githubusercontent.com/vinothvkr/bitwarden-self-host/master/bitwarden.sh"
+RUN_SCRIPT_URL="https://raw.githubusercontent.com/vinothvkr/bitwarden-self-host/master/run.sh"
 
 # Please do not create pull requests modifying the version numbers.
 COREVERSION="2023.5.1"
