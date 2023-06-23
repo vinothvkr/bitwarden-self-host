@@ -16,3 +16,4 @@ mkdir bwdata
 mkdir letsencrypt
 nano cloudflare.ini
 dns_cloudflare_api_token=
+chmod 600 cloudflare.ini
