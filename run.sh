@@ -82,9 +82,9 @@ function install() {
             echo ""
     
             mkdir -p $OUTPUT_DIR/letsencrypt
-            docker pull certbot/certbot
-            docker run -it --rm --name certbot -p 80:80 -v $OUTPUT_DIR/letsencrypt:/etc/letsencrypt/ certbot/certbot \
-                certonly --standalone --noninteractive  --agree-tos --preferred-challenges http \
+            docker pull certbot/dns-cloudflare
+            docker run -it --rm --name certbot -p 80:80 -v $OUTPUT_DIR/letsencrypt:/etc/letsencrypt/ certbot/dns-cloudflare \
+                certonly --dns-cloudflare --dns-cloudflare-credentials /etc/letsencrypt/cloudflare.ini --agree-tos \
                 --email $EMAIL -d $DOMAIN --logs-dir /etc/letsencrypt/logs
         fi
     fi
@@ -167,9 +167,9 @@ function dockerPrune() {
 function updateLetsEncrypt() {
     if [ -d "${OUTPUT_DIR}/letsencrypt/live" ]
     then
-        docker pull certbot/certbot
+        docker pull certbot/dns-cloudflare
         docker run -i --rm --name certbot -p 443:443 -p 80:80 \
-            -v $OUTPUT_DIR/letsencrypt:/etc/letsencrypt/ certbot/certbot \
+            -v $OUTPUT_DIR/letsencrypt:/etc/letsencrypt/ certbot/dns-cloudflare \
             renew --logs-dir /etc/letsencrypt/logs
     fi
 }
@@ -177,9 +177,9 @@ function updateLetsEncrypt() {
 function forceUpdateLetsEncrypt() {
     if [ -d "${OUTPUT_DIR}/letsencrypt/live" ]
     then
-        docker pull certbot/certbot
+        docker pull certbot/dns-cloudflare
         docker run -i --rm --name certbot -p 443:443 -p 80:80 \
-            -v $OUTPUT_DIR/letsencrypt:/etc/letsencrypt/ certbot/certbot \
+            -v $OUTPUT_DIR/letsencrypt:/etc/letsencrypt/ certbot/dns-cloudflare \
             renew --logs-dir /etc/letsencrypt/logs --force-renew
     fi
 }
