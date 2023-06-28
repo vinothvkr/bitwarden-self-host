@@ -12,8 +12,22 @@ For any issues regarding a specific client application, please visit [bitwarden/
 curl -o bitwarden.sh "https://raw.githubusercontent.com/vinothvkr/bitwarden-self-host/master/bitwarden.sh" && chmod 700 bitwarden.sh
 ```
 
-mkdir bwdata
-mkdir letsencrypt
-nano cloudflare.ini
-dns_cloudflare_api_token=
-chmod 600 cloudflare.ini
+```bash
+mkdir bwdata && mkdir bwdata/letsencrypt
+```
+
+```bash
+nano bwdata/letsencrypt/cloudflare.ini
+```
+
+```bash
+dns_cloudflare_api_token=XXXXXXXXXXXXXXXXXXX
+```
+
+```bash
+chmod 600 bwdata/letsencrypt/cloudflare.ini
+```
+
+```bash
+./bitwarden.sh install
+```
