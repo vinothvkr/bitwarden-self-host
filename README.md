@@ -8,6 +8,8 @@ For any issues regarding a specific client application, please visit [bitwarden/
 
 # Get started
 
+Follow the steps mentioned [here](https://bitwarden.com/help/install-on-premise-linux/#create-bitwarden-local-user-directory) before running the below command.
+
 ```bash
 curl -o bitwarden.sh "https://raw.githubusercontent.com/vinothvkr/bitwarden-self-host/master/bitwarden.sh" && chmod 700 bitwarden.sh
 ```
